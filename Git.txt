@@ -1,0 +1,346 @@
+
+Version control system : Distributed Version control system & centralized Version control system
+Destributed version control systems like: Git, Mercurial, Bazzar, Subversion, VisualSourceSafe, CVS
+centralized Version control system : project on the server
+Distributed Version control system : all team has a copy of project, easy working offline
+Git is Distributed version control system
+  - every stage is called version
+  - new version happens for enhancement or adding new features
+    so Git handle versions
+Git diveded project to 3 fields:
+	- Working directory
+	- Staging area
+	- Repository
+why Git?
+	- Git is free and open source
+Github is source for project and sources like [GitLab,BitBucket,.., any alternative websites]
+github simplify using git
+you can use git without github
+you can upload it on centralized server
+Git has GUI
+Git prevent conflict of working, how?
+- Developers contribute to the same project
+- you can revert changes
+- you can collaborate to fix issue
+- you can collaborate to create new features
+- you can solve conflicts
+- you can organize features
+-----------------------------------------------------------------------------
+
+Words you will hear:
+Repository(repo) : has all codes of project; we have 2 repositories: Local Repo & Remote Repo
+Branch : branch to make modify or solving bugs ,... 
+		different between Repository & branch like : company and branch of company
+Local Repo : on my pc
+Remote Repo : server company or github or any alternative websites
+commit : like snapshot or checkPoint in local repo
+clone : take a copy from local repo or remote repo
+	you can clone local repo in another location in the same pc
+push : upload local repo changes to remote repo
+pull : you pull changes from remote repo to local repo
+pull request : tell other about your changes to pull it from local to remote,
+	       admin can reject pull request
+notes:
+- create repository for every project
+- create a new branch for every feature or enhancement or ...etc
+- no need to connect to remote repo when working
+- anyone can push or pull depends on permissions
+- send files from working directory to staging area by 'add' command
+- send files from staging area to repository by 'commit' command
+- git gets files in repository index number it is called 'SHA'
+- every commit has different 'SHA' like snapshot
+-----------------------------------------------------------------------------
+
+Sign up on Github > Github.com > Sign up > Create an account > Continue > Submit > Verify your email address
+to create new repository : Repository > New > Create repository
+we can use cmder or git program to work on Git
+How to open Git? 
+1- rightClick
+2- Git Bash Here
+-----------------------------------------------------------------------------
+
+md extends of README file
+in readme file use # for heading
+# Big heading
+##### smaller heading
+- you can search online for how to write readme file
+git clone <remote_repo_url> : to take remote repository and put it in local repository(created) in your direction
+-----------------------------------------------------------------------------
+
+//commands
+git status : used to know status in working directory, note: it's show current branch
+git add <file_name> : to add this file on staging area
+git add . : to add all files on staging area
+git add * : to add all files on staging area
+git rm --cached <file_name> : getout a file from staging area (unstage file)
+git rm --cached * : getout all files from staging area (unstage file)
+//or
+git rm --cached -r . :getout all files from staging area (unstage file)
+git restore <file_name>: to discard changes in working directory
+git commit -m "add to learn git" : to add to local repository,-m means message
+note: if master branch doesn't have any commit, git branch : return null 
+note: don't write more than 50 letter in commit,why; if you write more than 50 letter not appear in log
+note: use keywords in message, make good commit
+-----------------------------------------------------------------------------
+
+//commands
+git branch : to know all branches
+git push <remote_repo_name> <branch_name> : to push local repository to remote repository
+	 				    ex : git push origin master
+git remote: to know remote repository name
+git remote -v: to know remote repository name
+note: contributers in github who upload commits
+-----------------------------------------------------------------------------
+
+//commands
+git pull <remote_repo_name>: take a copy from remote branch to local branch
+			 git pull consists of git fetch & git merge
+	git fetch : to get new modification from remote branch and put it in another branch
+	git merge : to merge data of remote repo with local branch
+-----------------------------------------------------------------------------
+
+//commands
+git config --list / git config -l  : to get list of configurations
+git help config : it open html page (manual page of git) has big configuration list 
+git config user.name : to know user name, not global
+git config --global user.name : to know user name
+git config --global user.name "mohamed" : to set or edit user name
+git config --global user.email : to know user email
+git config --global user.email "mohamedamha@gmail.com" : to set or edit user email
+
+..and so on
+note: we will found dublicate entry in git (git has bug) because git bring configuration from more destination
+git config -l --show-origin : to show destination for all configuration
+git config --global --unset user.email : to delete user.email value
+git config --global --unset user.name : to delete user.name value
+..and so on
+//or
+git config --global user.email "" : to delete user.email value
+git config --global user.name "" : to delete user.name value
+..and so on
+git config --global --edit : open editor to edit configuration .gitconfig file
+--local: for current repo
+--global : for user scope
+--system : for system scope
+git config core.editor <editor_name> : to change editor
+-----------------------------------------------------------------------------
+
+How to create public key or secure shell key for Github?
+- we can have more than public key from home or work or any place 
+//commands
+ssh-keygen -t rsa -b 4096 -c 'mymail@yahoo.com' : to generate public key , t :type of algorithm , rsa: ravest shamer adelman , b: number of bytes , c: comment
+	it's show the destination, get key from file by: cat <file_name> : to get content of file
+to add ssh to github > setting > SSH & GPG keys > New SSH key
+ssh -t : to authnticate to github by public key
+-----------------------------------------------------------------------------
+
+//commands
+git init : to create empty repository(local repo) in your direction 
+git remote add <create_alias_name> <url_remote_repo> : to connect local repo with remote repo
+					ex: git remote add origin git@github.com:Mohamed/mytest.git
+git push -u <remote_repo_name> <branch_name> : to pull then push , to get latest version then upload my branch
+-----------------------------------------------------------------------------
+
+why pull request?
+	ask for helping in code
+	helps admin to reject or maintain code before merge
+fork : take a copy of remote repo in my remote repo
+note: able to merge means no conflict
+if you are finished, you can create pull request
+allow edit for maintainters : checkbox to allow maintaining for admins , this checkbox above create pull request button
+-----------------------------------------------------------------------------
+
+why alias?
+	to reduce commands
+//commands
+git config --global alias.st status : making alias for status to be st
+so can make 
+	git st : the same git status
+git config --global alias.cm "commit -m" : we create "" because space
+	ex: git cm "adding alias"
+note: we can press tab for auto complete
+-----------------------------------------------------------------------------
+
+branch : take a copy of last commit and make a branch
+branch : to create new feature or fix bugs or ...etc
+	 if work done & it's ok, making merge or push or pull request to remote repo; it can rejected
+	 if you are agree of branch you can make merge to master branch
+//commands
+git branch : to show all branches
+git branch <branch_name> : to create branch
+git checkout <branch_name> : to switch on branch
+git branch -d <branch_name> : to delete branch, -d for safe delete or -D to force delete
+	note: when branch not merged will show error say branch not fully merged if you want to delete : git branch -D <branch_name>
+git checkout -b <branch_name> : to create branch and make switch for it(current branch)
+git branch -m <old_branch_name> <new_branch_name> : to rename current branch
+git diff <branch_name>..<another_branch_name>: to show different between branches; it's show content of files
+						ex: git diff master..b2
+						ex: git diff master b2
+cat .git/HEAD: to know head pointer reference
+git merge <branch_merge> : to merge current branch with <branch_merge>
+				ex: git merge master
+-----------------------------------------------------------------------------
+
+//commands
+git stash : take untracking files from staging area & disappear it
+git stash pop : getout the last stash files
+git stash list : show all stashes with id & message
+git stash save "here is a message" : save to add message to stash
+git stash apply : getout a copy of stash
+git stash pop stash@{1} : getout stash ids' who has 1
+git stash drop : delete last stash
+git stash drop stash@{2} : delete stash ids' has 2
+git stash show : show what in the stash
+git stash show stash@{1} : show what in the stash ids' who has 1
+git stash clear : to delete all stashes
+-----------------------------------------------------------------------------
+
+//commands
+git restore --staged <file_name> : to unstage file means from staging area to working direction
+git restore --staged * : to unstage all files means from staging area to working directory
+git clean -n : to show all files in working directory, make untracked file hidden from staging area
+git clean -f : to deleting files in working directory whose not adding to staging area
+-----------------------------------------------------------------------------
+
+headPointer : stop on last commit of current branch, every commit has SHA
+note: first commit tree is null, tree take first 7 hexadecimal SHA
+note: we can let head refer to another commit
+//commands
+git log : to show all commits in repository
+git log --oneline : to show all commits in repository on one line with message
+git reset --hard <hash_commit>: to delete all changes, so head now refer to commit whose has hash_commit; dangerous reset(be careful when use it)
+git push <url_name> <branch_name> -f : to upload changes by force, because it can given error when modify in remote repo because conflict
+					ex: git push origin master -f
+git fetch <url_name>: take data from remote repo and add it in a branch of local repo
+					ex: git fetch origin
+git merge <branch_name> <another_branch_name>: to merge 2 branches; can happen conflict
+note: after conflict reslove problem in code then add it to staging area then local repo
+git pull <url_name>: it makes fetch & merge
+-----------------------------------------------------------------------------
+
+note: .DS_Store, thumbs.db : don't upload this files to github
+	.DS_Store : hidden system file in mac
+	thumbs.db : hidden system file in window
+we can create .gitignore : to let git, ignore files what i need
+	ex : in .gitignore file we will write
+		 *.log
+		 so any file has extension log. git will not see it(ignore it)
+	ex : !myfile.log
+	     git will see myfile.log
+note: if folder is empty it doesn't show in git status
+note : we can add folders to .gitignore
+//commands
+git add -f <file_name> : to add file by force even if it in the .gitignore file
+// you can search online for git ignore patterns, regular expression
+-----------------------------------------------------------------------------
+
+what is tag?
+	used to add tag to specific code , used for versions
+Releases: what i can download
+tags: light weight tag or annotated tag
+light weight tag : related with commit take message from commit
+//commands
+git tag : to show all versions
+git tag <tag_name> : to create tag
+	ex: git tag v1.0
+git push <url_name> <tag_name> : to push tag on remote repo
+git tag -a <tag_name> -m "my tag message": a means tag is annotated tag
+git push <url_name> -d <tag_name> : to delete specific tag
+note: if you commit, it will change in all tags, so make specific branch for every tag
+-----------------------------------------------------------------------------
+
+//commands
+git tag -l "<tag_name>" : to search on specific tag
+	ex: git tag -l "v1.0"
+	ex: git tag -l "v1.*": for all versions of v1
+notes:
+	we can create release from tags in github
+	pre-release: to show something before download release
+	we can create draft for release
+git tag -d <tag_name>: to delete tag, -d = --delete
+git push origin -d <tag_name> : to delete tag from remote repo
+-----------------------------------------------------------------------------
+
+//commands
+git diff: to know changes between working directory & staging area
+git diff --staged: show the different between staging area & local repository
+git rm <file_name>: to delete file
+git rm -f <file_name>: to delete file from staging area, -f means force removal, we can don't use -f if file in repository
+git mv <old_name> <new_name>: to rename file
+git checkout "<file_name>": to make undo changes after adding to staging area or repository
+note: if we add a file to staging area then modify it then add same file to staging area : it's make override
+git commit --amend -m "my modification": to modify in last commit ,accept changes in working directory
+git checkout <sha_commit>: to return all files to specific commit, it's change in working directory
+git checkout <sha_commit> <file_name>: to return only file specific commit
+-----------------------------------------------------------------------------
+
+git reset head <file_name> : remove editation from stage(UnStage file) when file in repository
+reset used to change head pointer
+reset has 3 types:
+	- soft reset
+	- mixed reset
+	- hard reset
+- soft reset
+	used to merge commits
+//commands
+git reset --soft <sha_num>: head pointer refer to sha_num; staging area not change(last version stay in staging area); repository not change
+- mixed reset (default reset)
+git reset --mixed <sha_num>: head pointer refer to sha_num; working directory change; staging area change; repository not change
+//or
+git reset <sha_num>
+- hard reset
+	used to delete commits after sha_num, delete new versions
+//command
+git reset --hard <sha_num>: head pointer refer to sha_num; working directory is change; staging area change; repository is change
+-----------------------------------------------------------------------------
+
+notes:
+- .gitignore : to prevent system tracking some files (use Regular expression)
+- subl .gitignore: in linux: to add ignore file
+- in windows: open with anyEditor to create .gitignore file
+- if you want to ignore some files
+  ex:
+  page.txt
+  *.java
+  !fileName.java
+-----------------------------------------------------------------------------
+
+//commands
+git log --oneline -<number> : to get last numbers of commits
+	ex: git log --oneline -3
+git log --since=<"year-month-day"> : to get commits in after or equal this date
+	ex: git log --since='2019-5-2'
+git log --until='2020-12-24'> to get commits before or equal this date
+	ex: git log --until='2011-3-2'
+git log --author=<author_name> : to get commits of author
+	ex: git log --author="mohamed"
+git log <old_sha>..<sha>: to present commits between SHAs
+git log --stat: to show SHA with information
+git log --format=short: to show commits with short informations
+git log --oneline --graph --all --decorate: to show branches
+-----------------------------------------------------------------------------
+
+merge : add editing to repository(master)
+merge has 2 types:
+	- fast-forward merge
+	- true merge
+true merge: to pevent conflict when merge 2 branches has modification
+fast-forward merge: take the commit of branch & merge it with last commit to the another branch
+//commands
+git merge <branch_name>: to merge branch_name with current branch
+git merge --no-ff <branch_name>: it's open editor contains a message, just add your message; -ff means fast forward
+git merge --no-ff <branch_name> -m "<message>": the same with message
+-----------------------------------------------------------------------------
+
+notes:
+- if you making clone from unidentified repo when push given error, it needs permissions
+- raw button in github used to show code simply; you can copy it
+- blame button in github used to show information about every commit like author, time,...
+- star in github to show it in specific page of github
+- issue in github to request modification in code
+- assigness in github to ask people to show issue
+- wiki in github to descripe a project; write it like README file
+- q: if you need to quit from log
+- code <file_name> : to open file_name with vscode
+-----------------------------------------------------------------------------
+- important note: Sorry if something wrong i just learn.
